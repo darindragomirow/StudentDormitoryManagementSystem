@@ -1,0 +1,10 @@
+﻿@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<h2>Index</h2>*@
+@Html.Partial("_ProfilePartial")
+
+<h3>Current user:</h3>
+<div class="currentUser">@User.Identity.Name</div>

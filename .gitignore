@@ -1,0 +1,13 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/StudentDormitoryManagementSystem/.vs/StudentDormitoryManagementSystem/v15
+/StudentDormitoryManagementSystem/.vs/config
+/StudentDormitoryManagementSystem/packages
+/StudentDormitoryManagementSystem/StudentDormitoryManagementSystem
+/StudentDormitoryManagementSystem/StudentDormitoryManagementSystem.Common/obj
+/StudentDormitoryManagementSystem/StudentDormitoryManagementSystem.Data/obj
+/StudentDormitoryManagementSystem/StudentDormitoryManagementSystem.Services
+/StudentDormitoryManagementSystem/StudentDormitoryManagementSystem.Services.Tests/obj
+/StudentDormitoryManagementSystem/StudentDormitoryManagementSystem.Tests/obj

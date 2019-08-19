@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="col-md-4">
+    <h2 id="adminPageTitle" class="text-center" style="color:green;">Admin panel</h2>
+    <div id="sidebar" class="well sidebar-nav">
+        <h5>
+            <i class="glyphicon glyphicon-home"></i>
+            <small><b>MANAGEMENT</b></small>
+        </h5>
+        <ul class="nav nav-pills nav-stacked">
+            <li class="active">
+                @Html.ActionLink("Home", "Index", "AdminItems", new { area = "Admin" })
+            </li>
+            <li><a href="#">Search</a></li>
+        </ul>
+        <h5>
+            <i class="glyphicon glyphicon-user"></i>
+            <small><b>USERS</b></small>
+        </h5>
+        <ul class="nav nav-pills nav-stacked">
+            <li><a href="#">List</a></li>
+            <li><a href="#">Manage</a></li>
+        </ul>
+        <h5>
+        <i class="glyphicon glyphicon-plus"></i>
+            <small><b>Add</b></small>
+        </h5>
+        <ul class="nav nav-pills nav-stacked">
+        <li>
+            @Html.ActionLink("Add new item", "AddNewItem", "AdminItems", new { area = "Admin" })
+        </li>
+        </ul>
+    </div>
+</div>

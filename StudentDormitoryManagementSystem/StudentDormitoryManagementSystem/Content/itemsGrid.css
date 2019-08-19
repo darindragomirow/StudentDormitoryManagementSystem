@@ -1,0 +1,23 @@
+﻿table {
+    border: 1px solid #CCC;
+    border-collapse: collapse;
+}
+
+.table-bordered > thead > tr > th, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > td {
+    border: none;
+}
+
+th {
+    background-color: transparent;
+    border: none;
+    cursor: auto;
+    box-shadow: none;
+    padding: 0;
+    height: auto;
+    background-color: #428BCA;
+}
+
+    th a {
+        color: white;
+    }
+

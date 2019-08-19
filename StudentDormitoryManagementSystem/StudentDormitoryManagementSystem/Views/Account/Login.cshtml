@@ -1,0 +1,46 @@
+﻿@using StudentDormitoryManagementSystem.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+}
+
+<div class="container">
+    <div class="card card-container">
+        <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+        <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+        <p id="profile-name" class="profile-name-card"></p>
+        <section>
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-signin", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <span id="reauth-email" class="reauth-email"></span>
+                @Html.TextBoxFor(m => m.Email, new { @id = "", @class = "form-control", @placeholder = "Email address" })
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                @*<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>*@
+                @Html.PasswordFor(m => m.Password, new { @id = "inputPassword", @class = "form-control", @placeholder = "Password" })
+                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                @*<input type="password" id="inputPassword" class="form-control" placeholder="Password" required>*@
+                <div id="remember" class="checkbox">
+                    <label>
+                        @Html.CheckBoxFor(m => m.RememberMe)
+                        @Html.LabelFor(m => m.RememberMe)
+                    </label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+                <p>
+                    @Html.ActionLink("Register as a new user", "Register")
+                </p>
+                <p>
+                    @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                </p>
+            }
+        </section>
+    </div><!-- /card-container -->
+</div><!-- /container -->
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Styles.Render("~/Content/login")
+    @Styles.Render("~/Content/css")
+}

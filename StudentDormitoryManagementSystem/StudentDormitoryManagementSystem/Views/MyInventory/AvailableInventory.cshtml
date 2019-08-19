@@ -1,0 +1,67 @@
+﻿@model StudentDormitoryManagementSystem.Models.ItemsViewModel
+@{
+    var defaultPageSize = StudentDormitoryManagementSystem.Common.Constants.DefaultPageSize;
+}
+
+@{
+    ViewBag.Title = "My Inventory";
+    WebGrid grid = new WebGrid(null, rowsPerPage: defaultPageSize);
+    grid.Bind(Model.AvailableItems, autoSortAndPage: true, rowCount: defaultPageSize);
+}
+
+<link href="https://code.jquery.com/ui/1.12.0-rc.2/themes/smoothness/jquery-ui.css" rel="stylesheet" />
+<br />
+<h1>Current inventory of Room @Model.RoomNumber</h1>
+<br />
+@grid.GetHtml(tableStyle: "table table-bordered",
+ mode: WebGridPagerModes.All,
+ firstText: "<< First",
+ previousText: "< Prev",
+ nextText: "Next >",
+ lastText: "Last >>",
+    columns: grid.Columns(
+    grid.Column("Name", "Name"),
+    grid.Column("Description", "Description"),
+    grid.Column("State", "State"),
+    grid.Column("Size", "Size"),
+    grid.Column("Room.Number", "Room"),
+    grid.Column("ExpirationDate", "ExpirationDate"),
+    grid.Column(header: "Action",
+                format: @<text><a data-value='@item.Value.Id' href='javascript:void(0)' class='btnEdit'>Edit</a></text>)
+                                        ))
+
+<div id="dialog" title="edit view" style="overflow: hidden;"></div>
+
+@section Scripts{
+    <script src="https://code.jquery.com/ui/1.12.0-rc.2/jquery-ui.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            var id;
+            $(document).on('click',
+                '.btnEdit',
+                function() {
+                    id = $(this).attr("data-value");
+                    $('#dialog').dialog('open');
+                });
+
+            $('#dialog').dialog({
+                autoOpen: false,
+                width: 400,
+                resizable: false,
+                title: 'Edit Product details',
+                modal: true,
+                open: function(event, ui) {
+                    // Load partial view _GridEditPartial
+                    $(this).load("@Url.Action("GetProductById", "MyInventory")?id=" + id);
+                },
+                buttons: {
+                    "Close": function() {
+                        $(this).dialog("close");
+                    }
+                }
+            });
+        });
+    </script>
+}
+@Styles.Render("~/Content/css")

@@ -1,0 +1,33 @@
+﻿@model StudentDormitoryManagementSystem.Models.ItemViewModel
+
+@using (Ajax.BeginForm("UpdateProduct", "MyInventory", ajaxOptions: new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "result" }))
+{
+    @*<div class="form-group">
+            <label for="exampleInputEmail1">Product Name</label>
+            @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+        </div>*@
+    @Html.HiddenFor(x => x.Id)
+    @Html.HiddenFor(x => x.ItemCategory.CategoryName)
+    @Html.HiddenFor(x => x.DateRegistered)
+    @Html.HiddenFor(x => x.ExpirationDate)
+    @Html.HiddenFor(x => x.Room.Number)
+    @Html.HiddenFor(x => x.Material)
+    @Html.HiddenFor(x => x.Model)
+    @Html.HiddenFor(x => x.Size)
+    <div class="form-group">
+        <label for="exampleInputPassword1">Name</label>
+        @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Description</label>
+        @Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">State</label>
+        @Html.TextBoxFor(x => x.State, new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-default">Submit</button>
+}
+
+<div id="result"></div>
