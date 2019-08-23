@@ -1,16 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
 using StudentDormitoryManagementSystem.Areas.Admin.Models;
 using StudentDormitoryManagementSystem.Contracts.Identity;
 using StudentDormitoryManagementSystem.Data.Model.Models;
-using StudentDormitoryManagementSystem.Models;
 using StudentDormitoryManagementSystem.Services.Contracts;
 
 namespace StudentDormitoryManagementSystem.Areas.Admin
 {
+    [Authorize]
     public class AdminItemsController : Controller
     {
         private readonly IItemsService itemsService;
@@ -32,7 +31,6 @@ namespace StudentDormitoryManagementSystem.Areas.Admin
 
         // GET: Admin/AdminItems
         [HttpGet]
-        [Authorize]
         public ActionResult Index()
         {
             return View();
@@ -41,7 +39,6 @@ namespace StudentDormitoryManagementSystem.Areas.Admin
 
         // GET: Admin/AdminItems/AddNewItem
         [HttpGet]
-        [Authorize]
         public ActionResult AddNewItem()
         {
             return View(new AddItemViewModel());
@@ -49,7 +46,6 @@ namespace StudentDormitoryManagementSystem.Areas.Admin
 
         // POST: Admin/AdminItems/AddNewItem
         [HttpPost]
-        [Authorize]
         public ActionResult AddNewItem(AddItemViewModel m)
         {
             if (!this.ModelState.IsValid) return View();
@@ -65,13 +61,7 @@ namespace StudentDormitoryManagementSystem.Areas.Admin
                 throw new Exception("The room does not exist!");
 
 
-            var owner = this.userManager.Users.FirstOrDefault(u => u.UserName == m.Owner);
 
-            if (owner != null)
-            {
-                if (owner.StudentInfo.Inventory == null)
-                    owner.StudentInfo.Inventory = new Inventory();
-            }
 
             var category = itemCategoriesService.GetAll().FirstOrDefault(c => c.CategoryName == m.ItemCategory.CategoryName);
             if (category != null)
@@ -94,12 +84,13 @@ namespace StudentDormitoryManagementSystem.Areas.Admin
 
             var item = this.mapper.Map<AddItemViewModel, Item>(m);
 
+
             //Adding the item to the user inventory
+            var owner = this.userManager.Users.FirstOrDefault(u => u.UserName == m.Owner);
             owner?.StudentInfo.Inventory.Items.Add(item);
 
             //Adding the mapped object to the repository
             this.itemsService.Add(item);
-            
 
             this.ModelState.Clear();
 

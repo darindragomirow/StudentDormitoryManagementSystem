@@ -10,10 +10,7 @@ namespace StudentDormitoryManagementSystem.Data.Model.Models
     {
         public StudentInfo()
         {
-            if (this.Inventory == null)
-            {
-                this.Inventory = new Inventory();
-            }
+
         }
 
         [Required]

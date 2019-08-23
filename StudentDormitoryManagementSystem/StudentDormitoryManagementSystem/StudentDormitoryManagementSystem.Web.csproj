@@ -261,6 +261,7 @@
     <Content Include="Content\Images\pokana.PNG" />
     <Content Include="Content\Images\shared-inventory.png" />
     <Content Include="Content\Images\we-succeeded.PNG" />
+    <Content Include="Content\itemDetails.css" />
     <Content Include="Content\itemsGrid.css" />
     <Content Include="Content\login.css" />
     <Content Include="Content\navbar-new.css" />
@@ -332,6 +333,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\MyInventory\AvailableInventory.cshtml" />
     <Content Include="Views\Shared\_GridEditPartial.cshtml" />
+    <Content Include="Views\MyInventory\GetItemDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

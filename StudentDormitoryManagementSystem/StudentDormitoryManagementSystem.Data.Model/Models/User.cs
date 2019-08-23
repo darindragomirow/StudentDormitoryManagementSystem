@@ -19,15 +19,6 @@ namespace StudentDormitoryManagementSystem.Data.Model.Models
         public bool IsDeleted { get; set; } = false;
         public DateTime? DeletedOn { get; set; }
 
-        //[DataType(DataType.DateTime)]
-        //public DateTime? DeletedOn { get; set; }
-
-        //[DataType(DataType.DateTime)]
-        //public DateTime? CreatedOn { get; set; }
-
-        //[DataType(DataType.DateTime)]
-        //public DateTime? ModifiedOn { get; set; }
-
         //[ForeignKey("UserRoleId")]
         //public virtual UserRole UserRole { get; set; }
         //public int UserRoleId { get; set; }

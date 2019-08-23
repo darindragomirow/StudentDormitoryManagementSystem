@@ -15,6 +15,7 @@ using StudentDormitoryManagementSystem.Services;
 
 namespace StudentDormitoryManagementSystem.Controllers
 {
+    [Authorize]
     public class MyInventoryController : Controller
     {
         private readonly IItemsService _itemsService;
@@ -49,22 +50,6 @@ namespace StudentDormitoryManagementSystem.Controllers
                 model.TotalCount = model.AvailableItems.Count;
             }
 
-            //var allItems = this._itemsService
-            //    .GetAll()
-            //    .OrderByDescending(x => x.CreatedOn.Value)
-            //    .ToList()
-            //    .Select(x => this._mapper.Map<ItemViewModel>(x));
-
-            //var model = new ItemsViewModel
-            //{
-            //    AvailableItems = allItems.ToList()
-            //};
-
-            //if (model.AvailableItems == null)
-            //    return View(model);
-
-            //model.TotalCount = model.AvailableItems.Count;
-
             return View(model);
         }
 
@@ -75,14 +60,22 @@ namespace StudentDormitoryManagementSystem.Controllers
                    && user?.StudentInfo.Inventory.Items.Count > 0;
         }
 
+        // GET: MyInventory/GetItemDetails?=id
+        [HttpGet]
+        public ActionResult GetItemDetails(Guid? id)
+        {
+            var model = this._itemsService.GetAll().Where(x => x.Id == id)
+                .ToList()
+                .Select(x => this._mapper.Map<ItemViewModel>(x))
+                .FirstOrDefault();
+
+            return View(model);
+        }
+
         // GET: MyInventory/GetProductById?=id
         [HttpGet]
-        [Authorize]
         public ActionResult GetProductById(Guid? id)
         {
-
-            var allItems = this._itemsService.GetAll().ToList();
-
             var model = this._itemsService.GetAll().Where(x => x.Id == id)
                 .ToList()
                 .Select(x => this._mapper.Map<ItemViewModel>(x))
@@ -100,7 +93,6 @@ namespace StudentDormitoryManagementSystem.Controllers
 
         // POST: MyInventory/UpdateProduct
         [HttpPost]
-        [Authorize]
         public ActionResult UpdateProduct(ItemViewModel modified)
         {
             if (modified != null)

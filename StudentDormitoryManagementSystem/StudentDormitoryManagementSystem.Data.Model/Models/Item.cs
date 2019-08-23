@@ -34,9 +34,9 @@ namespace StudentDormitoryManagementSystem.Data.Model.Models
         public virtual Room Room { get; set; }
         public Guid? RoomId { get; set; }
         
-        public DateTime DateRegistered { get; set; }
+        public DateTime? DateRegistered { get; set; }
 
-        public DateTime ExpirationDate { get; set; }
+        public DateTime? ExpirationDate { get; set; }
     }
 
     public enum Size

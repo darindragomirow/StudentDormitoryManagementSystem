@@ -73,6 +73,14 @@
     <Compile Include="Migrations\201908181233022_Make-User-IDeletable.Designer.cs">
       <DependentUpon>201908181233022_Make-User-IDeletable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908191858463_Make-DateTimes-Nullable.cs" />
+    <Compile Include="Migrations\201908191858463_Make-DateTimes-Nullable.Designer.cs">
+      <DependentUpon>201908191858463_Make-DateTimes-Nullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908192042286_Fix-DateTime-Errors.cs" />
+    <Compile Include="Migrations\201908192042286_Fix-DateTime-Errors.Designer.cs">
+      <DependentUpon>201908192042286_Fix-DateTime-Errors.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MsSqlDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -110,6 +118,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908181233022_Make-User-IDeletable.resx">
       <DependentUpon>201908181233022_Make-User-IDeletable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908191858463_Make-DateTimes-Nullable.resx">
+      <DependentUpon>201908191858463_Make-DateTimes-Nullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908192042286_Fix-DateTime-Errors.resx">
+      <DependentUpon>201908192042286_Fix-DateTime-Errors.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

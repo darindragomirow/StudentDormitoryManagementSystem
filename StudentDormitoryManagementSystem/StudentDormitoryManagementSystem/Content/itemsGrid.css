@@ -3,8 +3,17 @@
     border-collapse: collapse;
 }
 
+.table-bordered {
+    border: none;
+}
+
 .table-bordered > thead > tr > th, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > td {
     border: none;
+    border-bottom: 1px solid #CCC;
+}
+
+.table-bordered tr:hover {
+    background-color: antiquewhite;
 }
 
 th {
@@ -21,3 +30,16 @@ th {
         color: white;
     }
 
+.panel {
+    width: 800px;
+}
+
+.panel-head {
+    background-color: #428bca;
+    color: white;
+}
+
+.panel-head > h2 {
+    margin-bottom: -10px;
+    padding: 5px 10px 5px 10px;
+}

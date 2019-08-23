@@ -17,7 +17,7 @@ namespace StudentDormitoryManagementSystem.Data.Model.Models
 
         public bool Approved { get; set; }
 
-        public DateTime LastDateModified { get; set; }
+        public DateTime? LastDateModified { get; set; }
 
         [ForeignKey("RoomId")]
         public virtual Room Room { get; set; }

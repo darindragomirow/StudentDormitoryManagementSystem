@@ -28,6 +28,11 @@ namespace StudentDormitoryManagementSystem.Data
 
         public IDbSet<UserRole> UserRoles { get; set; }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Properties<DateTime>().Configure(c => c.HasColumnType("datetime2"));
+        }
 
         public override int SaveChanges()
         {

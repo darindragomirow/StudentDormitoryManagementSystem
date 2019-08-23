@@ -1,9 +1,6 @@
 ﻿@model StudentDormitoryManagementSystem.Models.ItemsViewModel
 @{
     var defaultPageSize = StudentDormitoryManagementSystem.Common.Constants.DefaultPageSize;
-}
-
-@{
     ViewBag.Title = "My Inventory";
     WebGrid grid = new WebGrid(null, rowsPerPage: defaultPageSize);
     grid.Bind(Model.AvailableItems, autoSortAndPage: true, rowCount: defaultPageSize);
@@ -11,26 +8,32 @@
 
 <link href="https://code.jquery.com/ui/1.12.0-rc.2/themes/smoothness/jquery-ui.css" rel="stylesheet" />
 <br />
-<h1>Current inventory of Room @Model.RoomNumber</h1>
-<br />
-@grid.GetHtml(tableStyle: "table table-bordered",
- mode: WebGridPagerModes.All,
- firstText: "<< First",
- previousText: "< Prev",
- nextText: "Next >",
- lastText: "Last >>",
-    columns: grid.Columns(
-    grid.Column("Name", "Name"),
-    grid.Column("Description", "Description"),
-    grid.Column("State", "State"),
-    grid.Column("Size", "Size"),
-    grid.Column("Room.Number", "Room"),
-    grid.Column("ExpirationDate", "ExpirationDate"),
-    grid.Column(header: "Action",
-                format: @<text><a data-value='@item.Value.Id' href='javascript:void(0)' class='btnEdit'>Edit</a></text>)
-                                        ))
+<div class="panel">
+    <div class="panel-head">
+        <h2 style="text-align: center;">Inventory List</h2>
+    </div>
 
-<div id="dialog" title="edit view" style="overflow: hidden;"></div>
+    @grid.GetHtml(tableStyle: "table table-bordered",
+                                         mode: WebGridPagerModes.All,
+                                         firstText: "<< First",
+                                         previousText: "< Prev",
+                                         nextText: "Next >",
+                                         lastText: "Last >>",
+                                            columns: grid.Columns(
+                                                grid.Column("Name","Name"),
+                                                    grid.Column("Description", "Description"),
+                                                    grid.Column("State", "State"),
+                                                    grid.Column("Size", "Size"),
+                                                    grid.Column("Room.Number", "Room"),
+                                                    grid.Column("ExpirationDate", "ExpirationDate"),
+                                                    grid.Column(header: "Edit",
+                                                                format: @<text><a data-value='@item.Value.Id' href='javascript:void(0)' class='btnEdit'>Edit</a></text>),
+                                                                                        grid.Column(header: "Details",
+                                                                                                                     format: @<text>@Html.ActionLink("Details", "GetItemDetails", "MyInventory", new { id = item.Value.Id }, new { @id = "details", @value = item.Value.Id })</text>)))
+
+    <div id="dialog" title="edit view" style="overflow: hidden;"></div>
+</div>
+
 
 @section Scripts{
     <script src="https://code.jquery.com/ui/1.12.0-rc.2/jquery-ui.min.js"></script>
@@ -63,5 +66,18 @@
             });
         });
     </script>
-}
+    <script type="text/javascript">
+        $(function () {
+            var tr = $('.table-bordered').find('tr');
+            tr.bind('click', function (event) {
+                var values = '';
+                var details = $(this).find('#details');
+                var id = details.attr("value");
+                
+                // Return view with details
+                window.location.href = "@Url.Action("GetItemDetails", "MyInventory")?id=" + id;
+            });
+        });
+    </script>
+    }
 @Styles.Render("~/Content/css")
