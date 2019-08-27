@@ -81,6 +81,18 @@
     <Compile Include="Migrations\201908192042286_Fix-DateTime-Errors.Designer.cs">
       <DependentUpon>201908192042286_Fix-DateTime-Errors.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908241011423_Add-functionality-for-item-reservation.cs" />
+    <Compile Include="Migrations\201908241011423_Add-functionality-for-item-reservation.Designer.cs">
+      <DependentUpon>201908241011423_Add-functionality-for-item-reservation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908251742188_Change-Item-Reservation-Properties.cs" />
+    <Compile Include="Migrations\201908251742188_Change-Item-Reservation-Properties.Designer.cs">
+      <DependentUpon>201908251742188_Change-Item-Reservation-Properties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908271908058_Delete-Unused-ItemReservation-Properties.cs" />
+    <Compile Include="Migrations\201908271908058_Delete-Unused-ItemReservation-Properties.Designer.cs">
+      <DependentUpon>201908271908058_Delete-Unused-ItemReservation-Properties.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MsSqlDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -124,6 +136,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908192042286_Fix-DateTime-Errors.resx">
       <DependentUpon>201908192042286_Fix-DateTime-Errors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908241011423_Add-functionality-for-item-reservation.resx">
+      <DependentUpon>201908241011423_Add-functionality-for-item-reservation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908251742188_Change-Item-Reservation-Properties.resx">
+      <DependentUpon>201908251742188_Change-Item-Reservation-Properties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908271908058_Delete-Unused-ItemReservation-Properties.resx">
+      <DependentUpon>201908271908058_Delete-Unused-ItemReservation-Properties.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

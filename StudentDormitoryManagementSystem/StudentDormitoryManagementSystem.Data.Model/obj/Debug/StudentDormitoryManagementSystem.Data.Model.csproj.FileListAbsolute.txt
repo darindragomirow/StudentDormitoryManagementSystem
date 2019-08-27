@@ -1,9 +1,6 @@
+E:\ТУ\Дипломна работа(проект)\StudentDormitoryManagementSystem\StudentDormitoryManagementSystem.Data.Model\bin\Debug\StudentDormitoryManagementSystem.Data.Model.dll.config
 E:\ТУ\Дипломна работа(проект)\StudentDormitoryManagementSystem\StudentDormitoryManagementSystem.Data.Model\bin\Debug\StudentDormitoryManagementSystem.Data.Model.dll
 E:\ТУ\Дипломна работа(проект)\StudentDormitoryManagementSystem\StudentDormitoryManagementSystem.Data.Model\bin\Debug\StudentDormitoryManagementSystem.Data.Model.pdb
-E:\ТУ\Дипломна работа(проект)\StudentDormitoryManagementSystem\StudentDormitoryManagementSystem.Data.Model\obj\Debug\StudentDormitoryManagementSystem.Data.Model.csproj.CoreCompileInputs.cache
-E:\ТУ\Дипломна работа(проект)\StudentDormitoryManagementSystem\StudentDormitoryManagementSystem.Data.Model\obj\Debug\StudentDormitoryManagementSystem.Data.Model.dll
-E:\ТУ\Дипломна работа(проект)\StudentDormitoryManagementSystem\StudentDormitoryManagementSystem.Data.Model\obj\Debug\StudentDormitoryManagementSystem.Data.Model.pdb
-E:\ТУ\Дипломна работа(проект)\StudentDormitoryManagementSystem\StudentDormitoryManagementSystem.Data.Model\bin\Debug\StudentDormitoryManagementSystem.Data.Model.dll.config
 E:\ТУ\Дипломна работа(проект)\StudentDormitoryManagementSystem\StudentDormitoryManagementSystem.Data.Model\bin\Debug\EntityFramework.dll
 E:\ТУ\Дипломна работа(проект)\StudentDormitoryManagementSystem\StudentDormitoryManagementSystem.Data.Model\bin\Debug\EntityFramework.SqlServer.dll
 E:\ТУ\Дипломна работа(проект)\StudentDormitoryManagementSystem\StudentDormitoryManagementSystem.Data.Model\bin\Debug\Microsoft.AspNet.Identity.Core.dll
@@ -12,4 +9,7 @@ E:\ТУ\Дипломна работа(проект)\StudentDormitoryManagementSy
 E:\ТУ\Дипломна работа(проект)\StudentDormitoryManagementSystem\StudentDormitoryManagementSystem.Data.Model\bin\Debug\EntityFramework.SqlServer.xml
 E:\ТУ\Дипломна работа(проект)\StudentDormitoryManagementSystem\StudentDormitoryManagementSystem.Data.Model\bin\Debug\Microsoft.AspNet.Identity.Core.xml
 E:\ТУ\Дипломна работа(проект)\StudentDormitoryManagementSystem\StudentDormitoryManagementSystem.Data.Model\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\ТУ\Дипломна работа(проект)\StudentDormitoryManagementSystem\StudentDormitoryManagementSystem.Data.Model\obj\Debug\StudentDormitoryManagementSystem.Data.Model.csproj.CoreCompileInputs.cache
+E:\ТУ\Дипломна работа(проект)\StudentDormitoryManagementSystem\StudentDormitoryManagementSystem.Data.Model\obj\Debug\StudentDormitoryManagementSystem.Data.Model.dll
+E:\ТУ\Дипломна работа(проект)\StudentDormitoryManagementSystem\StudentDormitoryManagementSystem.Data.Model\obj\Debug\StudentDormitoryManagementSystem.Data.Model.pdb
 E:\ТУ\Дипломна работа(проект)\StudentDormitoryManagementSystem\StudentDormitoryManagementSystem.Data.Model\obj\Debug\StudentDormitoryManagementSystem.Data.Model.csprojResolveAssemblyReference.cache

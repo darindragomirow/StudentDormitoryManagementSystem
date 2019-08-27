@@ -31,8 +31,34 @@ namespace StudentDormitoryManagementSystem.Data.Migrations
 
             //this.SeedUsers(context);
             //this.SeedSampleData(context);
+            this.SeedSharedInventory(context);
 
             base.Seed(context);
+        }
+
+        private void SeedSharedInventory(MsSqlDbContext context)
+        {
+            var kitchenRoom = new Room
+            {
+                CreatedOn = DateTime.Now,
+                Floor = 1,
+                Number = StudentDormitoryManagementSystem.Common.Constants.KitchenRoomNumber,
+                Type = RoomType.Shared,
+            };
+
+            context.Rooms.Add(kitchenRoom);
+
+            var kitchenInventory = new Inventory
+            {
+                Type = InventoryType.Shared,
+                Approved = true,
+                LastDateModified = DateTime.Now,
+                CreatedOn = DateTime.Now,
+                Room = kitchenRoom,
+                RoomId = kitchenRoom.Id
+            };
+
+            context.Inventories.Add(kitchenInventory);
         }
 
         private void SeedUsers(MsSqlDbContext context)

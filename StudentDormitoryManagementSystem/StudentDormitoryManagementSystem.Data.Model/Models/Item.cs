@@ -1,6 +1,7 @@
 ﻿using StudentDormitoryManagementSystem.Data.Model.Abstracts;
 using StudentDormitoryManagementSystem.Data.Model.Contracts;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -10,12 +11,15 @@ namespace StudentDormitoryManagementSystem.Data.Model.Models
     {
         public Item()
         {
+
         }
 
         [Required]
         public string Name { get; set; }
 
         public string Description { get; set; }
+
+        public ItemType ItemType { get; set; }
 
         public string Material { get; set; }
 
@@ -37,6 +41,10 @@ namespace StudentDormitoryManagementSystem.Data.Model.Models
         public DateTime? DateRegistered { get; set; }
 
         public DateTime? ExpirationDate { get; set; }
+
+        public bool isReserved { get; set; }
+        
+        public virtual ICollection<ItemReservation> Reservations { get; set; } = new HashSet<ItemReservation>();
     }
 
     public enum Size
@@ -51,5 +59,11 @@ namespace StudentDormitoryManagementSystem.Data.Model.Models
         New,
         Well,
         Damaged
+    }
+
+    public enum ItemType
+    {
+        Personal,
+        Shared
     }
 }

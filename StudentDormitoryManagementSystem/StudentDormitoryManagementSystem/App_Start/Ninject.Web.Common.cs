@@ -75,13 +75,7 @@ namespace StudentDormitoryManagementSystem.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            //kernel.Bind(x =>
-            //{
-            //    x.FromThisAssembly()
-            //     .SelectAllClasses()
-            //     .BindDefaultInterface();
-            //});
-
+            // Database
             kernel.Bind(typeof(IEfRepository<>)).To(typeof(EfRepository<>));
             kernel.Bind(typeof(DbContext), typeof(MsSqlDbContext)).To<MsSqlDbContext>().InSingletonScope();
             kernel.Bind<ISaveContext>().To<SaveContext>();
@@ -92,12 +86,15 @@ namespace StudentDormitoryManagementSystem.App_Start
             kernel.Bind<IAuthenticationManager>().ToMethod(c => HttpContext.Current.GetOwinContext().Authentication).InRequestScope();
             kernel.Bind(typeof(IApplicationUserManager)).To(typeof(ApplicationUserManager)).InRequestScope();
             kernel.Bind(typeof(IApplicationSignInManager)).To(typeof(ApplicationSignInManager)).InRequestScope();
+
+            // Services
             kernel.Bind(typeof(IService<>)).To(typeof(Service<>));
             kernel.Bind<IItemsService>().To<ItemsService>().InRequestScope();
             kernel.Bind<IRoomsService>().To<RoomsService>().InRequestScope();
             kernel.Bind<IStudentsService>().To<StudentsService>().InRequestScope();
             kernel.Bind<IItemCategoriesService>().To<ItemCategoriesService>().InRequestScope();
             kernel.Bind<IInventoriesService>().To<InventoriesService>().InRequestScope();
+            kernel.Bind<IReservationsService>().To<ReservationsService>().InRequestScope();
         }
     }
 }

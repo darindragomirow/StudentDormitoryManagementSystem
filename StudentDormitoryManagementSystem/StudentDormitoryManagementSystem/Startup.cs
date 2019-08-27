@@ -8,6 +8,7 @@ namespace StudentDormitoryManagementSystem
     {
         public void Configuration(IAppBuilder app)
         {
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MTM1NTYzQDMxMzcyZTMyMmUzMGNwS2F1dUx3QzZZaWw0eFZpVW1sdlhTVUUrU2g0cTlQM3ZZdjlvcURKbms9");
             ConfigureAuth(app);
         }
     }

@@ -14,70 +14,69 @@
     </div>
 
     @grid.GetHtml(tableStyle: "table table-bordered",
-                                         mode: WebGridPagerModes.All,
-                                         firstText: "<< First",
-                                         previousText: "< Prev",
-                                         nextText: "Next >",
-                                         lastText: "Last >>",
-                                            columns: grid.Columns(
-                                                grid.Column("Name","Name"),
-                                                    grid.Column("Description", "Description"),
-                                                    grid.Column("State", "State"),
-                                                    grid.Column("Size", "Size"),
-                                                    grid.Column("Room.Number", "Room"),
-                                                    grid.Column("ExpirationDate", "ExpirationDate"),
-                                                    grid.Column(header: "Edit",
-                                                                format: @<text><a data-value='@item.Value.Id' href='javascript:void(0)' class='btnEdit'>Edit</a></text>),
-                                                                                        grid.Column(header: "Details",
-                                                                                                                     format: @<text>@Html.ActionLink("Details", "GetItemDetails", "MyInventory", new { id = item.Value.Id }, new { @id = "details", @value = item.Value.Id })</text>)))
+                                                 mode: WebGridPagerModes.All,
+                                                 firstText: "<< First",
+                                                 previousText: "< Prev",
+                                                 nextText: "Next >",
+                                                 lastText: "Last >>",
+                                                    columns: grid.Columns(
+                                                        grid.Column("Name", "Name"),
+                                                        grid.Column("Description", "Description"),
+                                                        grid.Column("State", "State"),
+                                                        grid.Column("Size", "Size"),
+                                                        grid.Column("Room.Number", "Room"),
+                                                        grid.Column("ExpirationDate", "ExpirationDate"),
+                                                        grid.Column(header: "Edit", format: @<text><a data-value='@item.Value.Id' href='javascript:void(0)' class='btnEdit'><span class="glyphicon glyphicon-pencil" style="font-size: 30px;"></span></a></text>),
+                                                        @*grid.Column(header: "Details", format: @<text>@Html.ActionLink("Details", "GetItemDetails", "MyInventory", new { id = item.Value.Id }, new { @id = "details", @value = item.Value.Id })</text>)))*@
+                                                        grid.Column(header: "Details", format: @<text><a href="@Url.Action("GetItemDetails", "MyInventory", new { id = item.Value.Id })"><span id="details" class="glyphicon glyphicon-info-sign" style="color:forestgreen;font-size: 30px;margin-left: 10px;"></span></a></text>)))
 
     <div id="dialog" title="edit view" style="overflow: hidden;"></div>
 </div>
 
-
 @section Scripts{
     <script src="https://code.jquery.com/ui/1.12.0-rc.2/jquery-ui.min.js"></script>
-    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
     <script type="text/javascript">
-        $(function() {
-            var id;
-            $(document).on('click',
-                '.btnEdit',
-                function() {
-                    id = $(this).attr("data-value");
-                    $('#dialog').dialog('open');
-                });
+            $(function() {
+                var id;
+                $(document).on('click',
+                    '.btnEdit',
+                    function() {
+                        id = $(this).attr("data-value");
+                        $('#dialog').dialog('open');
+                    });
 
-            $('#dialog').dialog({
-                autoOpen: false,
-                width: 400,
-                resizable: false,
-                title: 'Edit Product details',
-                modal: true,
-                open: function(event, ui) {
-                    // Load partial view _GridEditPartial
-                    $(this).load("@Url.Action("GetProductById", "MyInventory")?id=" + id);
-                },
-                buttons: {
-                    "Close": function() {
-                        $(this).dialog("close");
+                $('#dialog').dialog({
+                    autoOpen: false,
+                    width: 400,
+                    resizable: false,
+                    title: 'Edit Product details',
+                    modal: true,
+                    open: function(event, ui) {
+                        // Load partial view _GridEditPartial
+                        $(this).load("@Url.Action("GetProductById", "MyInventory")?id=" + id);
+                    },
+                    buttons: {
+                        "Close": function() {
+                            $(this).dialog("close");
+                        }
                     }
-                }
+                });
             });
-        });
-    </script>
-    <script type="text/javascript">
+        </script>
+
+    @*<script type="text/javascript">
         $(function () {
             var tr = $('.table-bordered').find('tr');
             tr.bind('click', function (event) {
                 var values = '';
                 var details = $(this).find('#details');
                 var id = details.attr("value");
-                
+
                 // Return view with details
                 window.location.href = "@Url.Action("GetItemDetails", "MyInventory")?id=" + id;
             });
         });
-    </script>
-    }
+    </script>*@
+}
 @Styles.Render("~/Content/css")
+

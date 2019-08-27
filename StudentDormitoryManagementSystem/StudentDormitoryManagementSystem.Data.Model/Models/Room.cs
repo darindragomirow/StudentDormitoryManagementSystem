@@ -28,5 +28,6 @@ namespace StudentDormitoryManagementSystem.Data.Model.Models
     {
         Single,
         Double,
+        Shared
     }
 }

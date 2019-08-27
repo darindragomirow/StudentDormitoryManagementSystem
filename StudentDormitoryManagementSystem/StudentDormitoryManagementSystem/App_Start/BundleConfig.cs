@@ -26,16 +26,19 @@ namespace StudentDormitoryManagementSystem
             bundles.Add(new ScriptBundle("~/bundles/navBundle").Include(
                         "~/Scripts/navbar.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/edit").Include(
+                        "~/Scripts/editItem.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/bootstrap.css",
                 "~/Content/site.css",
                 "~/Content/navbar-new.css",
                 "~/Content/itemsGrid.css",
-                "~/Content/itemDetails.css"));
+                "~/Content/itemDetails.css",
+                "~/Content/sharedItemsList.css"));
 
             bundles.Add(new StyleBundle("~/Content/login").Include(
                 "~/Content/login.css"));
-
         }
     }
 }

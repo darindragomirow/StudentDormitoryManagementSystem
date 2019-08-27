@@ -24,6 +24,12 @@
                         @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
                     </div>
                     <div class="form-group">
+                        <label>Type(Personal/Shared)</label>
+                        <br />
+                        @Html.TextBoxFor(m => m.Type)
+                        @Html.ValidationMessageFor(m => m.Type, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
                         <label>Category</label>
                         <br />
                         @Html.TextBoxFor(m => m.ItemCategory.CategoryName)
