@@ -45,6 +45,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -57,6 +58,8 @@
     <Compile Include="Contracts\IAuditable.cs" />
     <Compile Include="Contracts\IDataModel.cs" />
     <Compile Include="Contracts\IDeletable.cs" />
+    <Compile Include="Models\Breakdown.cs" />
+    <Compile Include="Models\Image.cs" />
     <Compile Include="Models\Inventory.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\ItemCategory.cs" />

@@ -1,6 +1,8 @@
 ﻿@model StudentDormitoryManagementSystem.Models.ItemsViewModel
 @{
     var defaultPageSize = StudentDormitoryManagementSystem.Common.Constants.DefaultPageSize;
+    var fullName = Model.Owner.StudentInfo.FirstName + " " + Model.Owner.StudentInfo.LastName;
+    var disabledPerson = Model.RoomNumber < 200 ? "Yes" : "No";
     ViewBag.Title = "My Inventory";
     WebGrid grid = new WebGrid(null, rowsPerPage: defaultPageSize);
     grid.Bind(Model.AvailableItems, autoSortAndPage: true, rowCount: defaultPageSize);
@@ -9,28 +11,72 @@
 <link href="https://code.jquery.com/ui/1.12.0-rc.2/themes/smoothness/jquery-ui.css" rel="stylesheet" />
 <br />
 <div class="panel">
-    <div class="panel-head">
-        <h2 style="text-align: center;">Inventory List</h2>
+    <div class="room-info" style="margin-left:-190px;">
+        <div class="card card-stats mb-4 mb-xl-0">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <h5 class="card-title text-uppercase text-muted mb-0">Room</h5>
+                        <span class="h2 font-weight-bold mb-0">@Model.RoomNumber</span>
+                    </div>
+                </div>
+                <p class="mt-3 mb-0 text-muted text-sm">
+                    <span class="text-success mr-2"><i class="fa fa-map-marker"></i> Floor:</span>
+                    <span class="text-nowrap">@Model.RoomNumber.ToString()[0]</span>
+                </p>
+                <p class="mt-3 mb-0 text-muted text-sm">
+                    <span class="text-success mr-2"><i class="fa fa-user"></i> Owner:</span>
+                    <span class="text-nowrap">@fullName</span>
+                </p>
+                <p class="mt-3 mb-0 text-muted text-sm">
+                    <span class="text-success mr-2"><i class="fa fa-sort-numeric-asc"></i> EGN:</span>
+                    <span class="text-nowrap">@Model.Owner.StudentInfo.EGN</span>
+                </p>
+                <p class="mt-3 mb-0 text-muted text-sm">
+                    <span class="text-success mr-2"><i class="fa fa-list-ol"></i> Course:</span>
+                    <span class="text-nowrap">@Model.Owner.StudentInfo.Course</span>
+                </p>
+                <p class="mt-3 mb-0 text-muted text-sm">
+                    <span class="text-success mr-2"><i class="fa fa-book"></i> Speciality:</span>
+                    <span class="text-nowrap">@Model.Owner.StudentInfo.Speciality</span>
+                </p>
+                <p class="mt-3 mb-0 text-muted text-sm">
+                    <span class="text-success mr-2"><i class="fa fa-users"></i> Type:</span>
+                    <span class="text-nowrap">@Model.RoomType</span>
+                </p>
+                <p class="mt-3 mb-0 text-muted text-sm">
+                    <span class="text-success mr-2"><i class="fa fa-wheelchair"></i> Disabled people:</span>
+                    <span class="text-nowrap">@disabledPerson</span>
+                </p>
+                <p class="mt-3 mb-0 text-muted text-sm">
+                    <span class="text-success mr-2"><i class="fa fa-check-circle"></i> Available items:</span>
+                    <span class="text-nowrap">@Model.TotalCount</span>
+                </p>
+            </div>
+        </div>
     </div>
+    <div class="inventory-table" style="margin-left:30px;">
+        <div class="panel-head">
+            <h2 style="text-align: center;">Inventory List</h2>
+        </div>
+        @grid.GetHtml(tableStyle: "table table-bordered",
+                                    mode: WebGridPagerModes.All,
+                                    firstText: "<< First",
+                                    previousText: "< Prev",
+                                    nextText: "Next >",
+                                    lastText: "Last >>",
+                                       columns: grid.Columns(
+                                           grid.Column("Name", "Name"),
+                                           grid.Column("Description", "Description"),
+                                           grid.Column("State", "State"),
+                                           grid.Column("Size", "Size"),
+                                           grid.Column("DateRegistered", "DateRegistered"),
+                                           grid.Column("ExpirationDate", "ExpirationDate"),
+                                           grid.Column(header: "Edit", format: @<text><a data-value='@item.Value.Id' href='javascript:void(0)' class='btnEdit'><span class="glyphicon glyphicon-pencil" style="font-size: 30px;"></span></a></text>),
+                                           grid.Column(header: "Details", format: @<text><a href="@Url.Action("GetItemDetails", "MyInventory", new { id = item.Value.Id })"><span id="details" class="glyphicon glyphicon-info-sign" style="color:forestgreen;font-size: 30px;margin-left: 10px;"></span></a></text>)))
 
-    @grid.GetHtml(tableStyle: "table table-bordered",
-                                                 mode: WebGridPagerModes.All,
-                                                 firstText: "<< First",
-                                                 previousText: "< Prev",
-                                                 nextText: "Next >",
-                                                 lastText: "Last >>",
-                                                    columns: grid.Columns(
-                                                        grid.Column("Name", "Name"),
-                                                        grid.Column("Description", "Description"),
-                                                        grid.Column("State", "State"),
-                                                        grid.Column("Size", "Size"),
-                                                        grid.Column("Room.Number", "Room"),
-                                                        grid.Column("ExpirationDate", "ExpirationDate"),
-                                                        grid.Column(header: "Edit", format: @<text><a data-value='@item.Value.Id' href='javascript:void(0)' class='btnEdit'><span class="glyphicon glyphicon-pencil" style="font-size: 30px;"></span></a></text>),
-                                                        @*grid.Column(header: "Details", format: @<text>@Html.ActionLink("Details", "GetItemDetails", "MyInventory", new { id = item.Value.Id }, new { @id = "details", @value = item.Value.Id })</text>)))*@
-                                                        grid.Column(header: "Details", format: @<text><a href="@Url.Action("GetItemDetails", "MyInventory", new { id = item.Value.Id })"><span id="details" class="glyphicon glyphicon-info-sign" style="color:forestgreen;font-size: 30px;margin-left: 10px;"></span></a></text>)))
-
-    <div id="dialog" title="edit view" style="overflow: hidden;"></div>
+        <div id="dialog" title="edit view" style="overflow: hidden;"></div>
+    </div>
 </div>
 
 @section Scripts{
@@ -62,21 +108,7 @@
                     }
                 });
             });
-        </script>
-
-    @*<script type="text/javascript">
-        $(function () {
-            var tr = $('.table-bordered').find('tr');
-            tr.bind('click', function (event) {
-                var values = '';
-                var details = $(this).find('#details');
-                var id = details.attr("value");
-
-                // Return view with details
-                window.location.href = "@Url.Action("GetItemDetails", "MyInventory")?id=" + id;
-            });
-        });
-    </script>*@
+    </script>
 }
 @Styles.Render("~/Content/css")
 

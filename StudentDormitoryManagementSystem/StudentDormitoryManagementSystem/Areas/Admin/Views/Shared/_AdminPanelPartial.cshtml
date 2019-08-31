@@ -1,8 +1,8 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Admin Home Page";
 }
 
-<div class="col-md-4">
+<div class="col-md-6" style="margin-left:-200px;">
     <h2 id="adminPageTitle" class="text-center" style="color:green;">Admin panel</h2>
     <div id="sidebar" class="well sidebar-nav">
         <h5>
@@ -11,7 +11,7 @@
         </h5>
         <ul class="nav nav-pills nav-stacked">
             <li class="active">
-                @Html.ActionLink("Home", "Index", "AdminItems", new { area = "Admin" })
+                <a href="@Url.Action("Index", "AdminItems", new { area = "Admin" })">Home</a>
             </li>
             <li><a href="#">Search</a></li>
         </ul>
@@ -20,17 +20,31 @@
             <small><b>USERS</b></small>
         </h5>
         <ul class="nav nav-pills nav-stacked">
-            <li><a href="#">List</a></li>
+            <li>
+                <a href="@Url.Action("ListUsers", "Users", new { area = "Admin" })">List</a>
+            </li>
             <li><a href="#">Manage</a></li>
         </ul>
         <h5>
-        <i class="glyphicon glyphicon-plus"></i>
-            <small><b>Add</b></small>
+            <i class="glyphicon glyphicon-plus"></i>
+            <small><b>TROUBLES</b></small>
         </h5>
         <ul class="nav nav-pills nav-stacked">
-        <li>
-            @Html.ActionLink("Add new item", "AddNewItem", "AdminItems", new { area = "Admin" })
-        </li>
+            <li>
+                <a href="@Url.Action("GetCurrentBreakdowns", "Breakdowns", new { area = "Admin" })">Current</a>
+            </li>
+            <li>
+                <a href="@Url.Action("GetAllBreakdowns", "Breakdowns", new { area = "Admin" })">History</a>
+            </li>
+        </ul>
+        <h5>
+            <i class="glyphicon glyphicon-plus"></i>
+            <small><b>ADD</b></small>
+        </h5>
+        <ul class="nav nav-pills nav-stacked">
+            <li>
+                <a href="@Url.Action("AddNewItem", "AdminItems", new { area = "Admin" })">Add new item</a>
+            </li>
         </ul>
     </div>
 </div>

@@ -12,6 +12,8 @@ namespace StudentDormitoryManagementSystem.Controllers
         [HttpGet]
         public ActionResult Index()
         {
+            ViewBag.HaveProblems = true;
+
             return View();
         }
 

@@ -31,7 +31,7 @@ namespace StudentDormitoryManagementSystem.Data.Migrations
 
             //this.SeedUsers(context);
             //this.SeedSampleData(context);
-            this.SeedSharedInventory(context);
+            //this.SeedSharedInventory(context);
 
             base.Seed(context);
         }

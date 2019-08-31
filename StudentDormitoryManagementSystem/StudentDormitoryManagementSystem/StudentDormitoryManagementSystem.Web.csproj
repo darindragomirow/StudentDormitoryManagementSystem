@@ -225,15 +225,21 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminItemsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BreakdownsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
     <Compile Include="Areas\Admin\Models\AddItemViewModel.cs" />
     <Compile Include="Areas\Profile\Controllers\ProfileController.cs" />
+    <Compile Include="Areas\Profile\Models\UsersViewModel.cs" />
+    <Compile Include="Areas\Profile\Models\UserViewModel.cs" />
     <Compile Include="Areas\Profile\ProfileAreaRegistration.cs" />
     <Compile Include="Contracts\Identity\IApplicationSignInManager.cs" />
     <Compile Include="Contracts\Identity\IApplicationUserManager.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CodeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MyInventoryController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\SharedInventoryController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -244,6 +250,7 @@
     <Compile Include="Infrastructure\IMapFrom.cs" />
     <Compile Include="Infrastructure\QueryableExtensions.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BreakdownViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ItemViewModel.cs" />
     <Compile Include="Models\ItemsViewModel.cs" />
@@ -272,6 +279,7 @@
     <Content Include="Content\itemsGrid.css" />
     <Content Include="Content\login.css" />
     <Content Include="Content\navbar-new.css" />
+    <Content Include="Content\report-breakdown.css" />
     <Content Include="Content\sharedItemsList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -289,6 +297,9 @@
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\AdminItems\AddNewItem.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_AdminPanelPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\ListUsers.cshtml" />
+    <Content Include="Areas\Admin\Views\Breakdowns\GetCurrentBreakdowns.cshtml" />
+    <Content Include="Areas\Admin\Views\Breakdowns\GetAllBreakdowns.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\editItem.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
@@ -345,9 +356,14 @@
     <Content Include="Views\MyInventory\GetItemDetails.cshtml" />
     <Content Include="Views\SharedInventory\GetSharedItems.cshtml" />
     <Content Include="Views\SharedInventory\GetItemReservations.cshtml" />
+    <Content Include="Views\Report\Index.cshtml" />
+    <Content Include="Views\Report\ReportBreakdown.cshtml" />
+    <Content Include="Views\Code\Qrcode.cshtml" />
+    <Content Include="Views\Code\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Images\Uploaded\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

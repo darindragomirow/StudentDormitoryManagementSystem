@@ -43,6 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstracts\Service.cs" />
+    <Compile Include="BreakdownsService.cs" />
+    <Compile Include="Contracts\IBreakdownsService.cs" />
+    <Compile Include="Contracts\IImagesService.cs" />
     <Compile Include="Contracts\IItemsService.cs" />
     <Compile Include="Contracts\IInventoriesService.cs" />
     <Compile Include="Contracts\IReservationsService.cs" />
@@ -51,6 +54,7 @@
     <Compile Include="Contracts\IStudentsService.cs" />
     <Compile Include="Contracts\IItemCategoriesService.cs" />
     <Compile Include="Contracts\IUsersService.cs" />
+    <Compile Include="ImagesService.cs" />
     <Compile Include="InventoriesService.cs" />
     <Compile Include="ItemCategoriesService.cs" />
     <Compile Include="ItemsService.cs" />

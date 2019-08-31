@@ -35,59 +35,71 @@
     <div class="container body-content">
         @if (User.Identity.IsAuthenticated)
         {
-        <div class="nav-side-menu">
-            <div class="brand">Brand Logo</div>
-            <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
-            <div class="menu-list">
-                <ul id="menu-content" class="menu-content collapse out">
-                    <li id="menu-li">
-                        <a id="menu-toggle" href="#">
+            <div class="nav-side-menu">
+                <div class="brand">Brand Logo</div>
+                <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+                <div class="menu-list">
+                    <ul id="menu-content" class="menu-content collapse out">
+                        <li id="menu-li">
+                            <a id="menu-toggle" href="#">
+                                <div class="row row-no-padding">
+                                    <div class="col-sm-8"><strong>Menu</strong></div>
+                                    <div class="col-sm-4"><img class="icon" src="http://localhost/StudentDormitoryManagementSystem/Content/Images/menu.png" /></div>
+                                </div>
+                            </a>
+                        </li>
+                        @if (User.Identity.Name != Constants.AdminEmail)
+                        {
+                            <li data-toggle="collapse" data-target="#products" class="collapsed">
+                                <div class="row row-no-padding">
+                                    <div class="col-sm-8"><a href="#"><strong>My Inventory</strong></a></div>
+                                    <div class="col-sm-4"><img class="icon" src="http://localhost/StudentDormitoryManagementSystem/Content/Images/my-inventory.png" /></div>
+                                </div>
+                            </li>
+                            <ul class="sub-menu collapse" id="products">
+                                <li>@Html.ActionLink("Available Inventory", "AvailableInventory", "MyInventory", new { Area = "" }, new { })</li>
+                                <li><a href="#">Fill a form for a new inventory</a></li>
+                            </ul>
+                        }
+                        <li data-toggle="collapse" data-target="#service" class="collapsed">
                             <div class="row row-no-padding">
-                                <div class="col-sm-8"><strong>Menu</strong></div>
-                                <div class="col-sm-4"><img class="icon" src="http://localhost/StudentDormitoryManagementSystem/Content/Images/menu.png" /></div>
+                                <div class="col-sm-8"><a href="#"><strong>Shared Inventory</strong></a></div>
+                                <div class="col-sm-4"><img class="icon" src="http://localhost/StudentDormitoryManagementSystem/Content/Images/shared-inventory.png" /></div>
                             </div>
-                        </a>
-                    </li>
-                    <li data-toggle="collapse" data-target="#products" class="collapsed">
-                        <div class="row row-no-padding">
-                            <div class="col-sm-8"><a href="#"><strong>My Inventory</strong></a></div>
-                            <div class="col-sm-4"><img class="icon" src="http://localhost/StudentDormitoryManagementSystem/Content/Images/my-inventory.png" /></div>
-                        </div>
-                    </li>
-                    <ul class="sub-menu collapse" id="products">
-                        <li>@Html.ActionLink("Available Inventory", "AvailableInventory", "MyInventory", new { Area = "" }, new { })</li>
-                        <li><a href="#">Fill a form for a new inventory</a></li>
+                        </li>
+                        <ul class="sub-menu collapse" id="service">
+                            <li>@Html.ActionLink("Kitchen", "GetSharedItems", "SharedInventory", new { roomNumber = Constants.KitchenRoomNumber, Area = "" }, new { })</li>
+                            <li>Laundry room</li>
+                            <li>Gaming room</li>
+                            <li>Library</li>
+                        </ul>
+                        @if (User.Identity.Name != Constants.AdminEmail)
+                        {
+                            <li>
+                                <div class="row row-no-padding">
+                                    <div class="col-sm-8"><strong>@Html.ActionLink("Report a breakdown", "ReportBreakdown", "Report", new { Area = "" }, new { })</strong></div>
+                                    <div class="col-sm-4"><img class="icon" src="http://localhost/StudentDormitoryManagementSystem/Content/Images/alert.jpg" /></div>
+                                </div>
+                            </li>
+                        }
+                        <li>
+                            <div class="row row-no-padding">
+                                <div class="col-sm-8"><a><strong>News</strong></a></div>
+                                <div class="col-sm-4"><img class="icon" src="http://localhost/StudentDormitoryManagementSystem/Content/Images/info.png" /></div>
+                            </div>
+                        </li>
+                        @if (User.Identity.Name == Constants.AdminEmail)
+                        {
+                            <li data-toggle="collapse" data-target="#products" class="collapsed">
+                                <div class="row row-no-padding">
+                                    <div class="col-sm-8"><strong>@Html.ActionLink("Genereate code", "Qrcode", "Code", new { Area = "" }, new { })</strong></div>
+                                    <div class="col-sm-4"><img class="icon" src="http://localhost/StudentDormitoryManagementSystem/Content/Images/QR-code.png" /></div>
+                                </div>
+                            </li>
+                        }
                     </ul>
-
-                    <li data-toggle="collapse" data-target="#service" class="collapsed">
-                        <div class="row row-no-padding">
-                            <div class="col-sm-8"><a href="#"><strong>Shared Inventory</strong></a></div>
-                            <div class="col-sm-4"><img class="icon" src="http://localhost/StudentDormitoryManagementSystem/Content/Images/shared-inventory.png" /></div>
-                        </div>
-                    </li>
-                    <ul class="sub-menu collapse" id="service">
-                        <li>@Html.ActionLink("Kitchen", "GetSharedItems", "SharedInventory", new { roomNumber = Constants.KitchenRoomNumber, Area = "" }, new { })</li>
-                        <li>Laundry room</li>
-                        <li>Library</li>
-                        <li>Gaming room</li>
-                    </ul>
-
-
-                    <li>
-                        <div class="row row-no-padding">
-                            <div class="col-sm-8"><a href="#"><strong>Report a problem</strong></a></div>
-                            <div class="col-sm-4"><img class="icon" src="http://localhost/StudentDormitoryManagementSystem/Content/Images/alert.jpg" /></div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="row row-no-padding">
-                            <div class="col-sm-8"><a><strong>News</strong></a></div>
-                            <div class="col-sm-4"><img class="icon" src="http://localhost/StudentDormitoryManagementSystem/Content/Images/info.png" /></div>
-                        </div>
-                    </li>
-                </ul>
+                </div>
             </div>
-        </div>
         }
         <div class="body-right">
             @RenderSection("ControlsSection", false)

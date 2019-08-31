@@ -15,5 +15,10 @@ namespace StudentDormitoryManagementSystem.Common
         public const short LaundryRoomNumber = 102;
         public const short GamingRoomNumber = 103;
         public const short LibraryRoomNumber = 104;
+        public const string LocalServerPath = "http://localhost/StudentDormitoryManagementSystem";
+        public const string UploadedImagesPath = "/Content/Images/Uploaded/";
+        public const string NotFoundImagePath = LocalServerPath + "/Content/Images/No-image-found.jpg";
+        public const string AlertImagePath = LocalServerPath + "/Content/Images/alert.jpg";
+        public const string ItemDetailsURL = "http://127.0.0.1/studentdormitorymanagementsystem/myinventory/getitemdetails/";
     }
 }

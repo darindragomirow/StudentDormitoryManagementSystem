@@ -89,9 +89,29 @@
     <Compile Include="Migrations\201908251742188_Change-Item-Reservation-Properties.Designer.cs">
       <DependentUpon>201908251742188_Change-Item-Reservation-Properties.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201908271908058_Delete-Unused-ItemReservation-Properties.cs" />
-    <Compile Include="Migrations\201908271908058_Delete-Unused-ItemReservation-Properties.Designer.cs">
-      <DependentUpon>201908271908058_Delete-Unused-ItemReservation-Properties.cs</DependentUpon>
+    <Compile Include="Migrations\201908280823553_201908251742188_Change-Item-Reservation-Properties.cs" />
+    <Compile Include="Migrations\201908280823553_201908251742188_Change-Item-Reservation-Properties.Designer.cs">
+      <DependentUpon>201908280823553_201908251742188_Change-Item-Reservation-Properties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908281341377_Add-ItemId-Nullable-To-ItemReservation.cs" />
+    <Compile Include="Migrations\201908281341377_Add-ItemId-Nullable-To-ItemReservation.Designer.cs">
+      <DependentUpon>201908281341377_Add-ItemId-Nullable-To-ItemReservation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908281825192_Change-item-reserve-property.cs" />
+    <Compile Include="Migrations\201908281825192_Change-item-reserve-property.Designer.cs">
+      <DependentUpon>201908281825192_Change-item-reserve-property.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908281838044_Add-Count-To-Items.cs" />
+    <Compile Include="Migrations\201908281838044_Add-Count-To-Items.Designer.cs">
+      <DependentUpon>201908281838044_Add-Count-To-Items.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908300720462_Add-Image-Model.cs" />
+    <Compile Include="Migrations\201908300720462_Add-Image-Model.Designer.cs">
+      <DependentUpon>201908300720462_Add-Image-Model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908301422375_Add-Breakdown-Model.cs" />
+    <Compile Include="Migrations\201908301422375_Add-Breakdown-Model.Designer.cs">
+      <DependentUpon>201908301422375_Add-Breakdown-Model.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MsSqlDbContext.cs" />
@@ -143,8 +163,23 @@
     <EmbeddedResource Include="Migrations\201908251742188_Change-Item-Reservation-Properties.resx">
       <DependentUpon>201908251742188_Change-Item-Reservation-Properties.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201908271908058_Delete-Unused-ItemReservation-Properties.resx">
-      <DependentUpon>201908271908058_Delete-Unused-ItemReservation-Properties.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201908280823553_201908251742188_Change-Item-Reservation-Properties.resx">
+      <DependentUpon>201908280823553_201908251742188_Change-Item-Reservation-Properties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908281341377_Add-ItemId-Nullable-To-ItemReservation.resx">
+      <DependentUpon>201908281341377_Add-ItemId-Nullable-To-ItemReservation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908281825192_Change-item-reserve-property.resx">
+      <DependentUpon>201908281825192_Change-item-reserve-property.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908281838044_Add-Count-To-Items.resx">
+      <DependentUpon>201908281838044_Add-Count-To-Items.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908300720462_Add-Image-Model.resx">
+      <DependentUpon>201908300720462_Add-Image-Model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908301422375_Add-Breakdown-Model.resx">
+      <DependentUpon>201908301422375_Add-Breakdown-Model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

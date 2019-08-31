@@ -7,13 +7,13 @@ namespace StudentDormitoryManagementSystem.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class DeleteUnusedItemReservationProperties : IMigrationMetadata
+    public sealed partial class _201908251742188_ChangeItemReservationProperties : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(DeleteUnusedItemReservationProperties));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(_201908251742188_ChangeItemReservationProperties));
         
         string IMigrationMetadata.Id
         {
-            get { return "201908271908058_Delete-Unused-ItemReservation-Properties"; }
+            get { return "201908280823553_201908251742188_Change-Item-Reservation-Properties"; }
         }
         
         string IMigrationMetadata.Source

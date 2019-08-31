@@ -95,6 +95,8 @@ namespace StudentDormitoryManagementSystem.App_Start
             kernel.Bind<IItemCategoriesService>().To<ItemCategoriesService>().InRequestScope();
             kernel.Bind<IInventoriesService>().To<InventoriesService>().InRequestScope();
             kernel.Bind<IReservationsService>().To<ReservationsService>().InRequestScope();
+            kernel.Bind<IImagesService>().To<ImagesService>().InRequestScope();
+            kernel.Bind<IBreakdownsService>().To<BreakdownsService>().InRequestScope();
         }
     }
 }

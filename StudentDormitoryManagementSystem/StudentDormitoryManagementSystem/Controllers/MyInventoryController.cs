@@ -19,12 +19,14 @@ namespace StudentDormitoryManagementSystem.Controllers
     public class MyInventoryController : Controller
     {
         private readonly IItemsService _itemsService;
+        private readonly IImagesService _imagesService;
         private readonly IMapper _mapper;
         private readonly IApplicationUserManager _userManager;
 
-        public MyInventoryController(IItemsService itemsService, IApplicationUserManager userManager, IMapper mapper)
+        public MyInventoryController(IItemsService itemsService, IImagesService imagesService, IApplicationUserManager userManager, IMapper mapper)
         {
             this._itemsService = itemsService;
+            this._imagesService = imagesService;
             this._userManager = userManager;
             this._mapper = mapper;
         }
@@ -46,6 +48,8 @@ namespace StudentDormitoryManagementSystem.Controllers
                 var userItemsModels = userItems.Select(x => this._mapper.Map<ItemViewModel>(x)).ToList();
 
                 model.RoomNumber = user.StudentInfo.Room.Number;
+                model.RoomType = user.StudentInfo.Room.Type.ToString();
+                model.Owner = user;
                 model.AvailableItems = userItemsModels;
                 model.TotalCount = model.AvailableItems.Count;
             }
@@ -68,6 +72,9 @@ namespace StudentDormitoryManagementSystem.Controllers
                 .ToList()
                 .Select(x => this._mapper.Map<ItemViewModel>(x))
                 .FirstOrDefault();
+
+            var imagePath = _imagesService.GetAll().FirstOrDefault(img => img.ItemId == id)?.Path;
+            model.ImagePath = imagePath != null ? Common.Constants.LocalServerPath + imagePath : Common.Constants.NotFoundImagePath;
 
             return View(model);
         }
@@ -113,7 +120,7 @@ namespace StudentDormitoryManagementSystem.Controllers
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest, ex.Message);
                 }
 
-                return Redirect("myinventory/availableinventory");
+                return Redirect(Url.Action("AvailableInventory", "MyInventory"));
             }
             else
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest, "The modified item is not valid and cannot be updated!");

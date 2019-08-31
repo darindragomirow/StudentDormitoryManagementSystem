@@ -1,15 +1,14 @@
-﻿
-@using StudentDormitoryManagementSystem.Areas.Admin.Models
-
+﻿@using StudentDormitoryManagementSystem.Areas.Admin.Models
 @model AddItemViewModel
 @{
     ViewBag.Title = "Add new item";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var guid = Guid.NewGuid();
 }
 <div class="addItemView">
     @Html.Partial("_AdminPanelPartial")
     <div class="col-md-8">
-        @using (Html.BeginForm("AddNewItem", "AdminItems", FormMethod.Post, new { area = "Admin" , enctype = "multipart/form-data" }))
+        @using (Html.BeginForm("AddNewItem", "AdminItems", FormMethod.Post, new { area = "Admin", enctype = "multipart/form-data" }))
         {
             <br />
             <hr />
@@ -24,28 +23,34 @@
                         @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
                     </div>
                     <div class="form-group">
-                        <label>Type(Personal/Shared)</label>
-                        <br />
-                        @Html.TextBoxFor(m => m.Type)
-                        @Html.ValidationMessageFor(m => m.Type, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="form-group">
                         <label>Category</label>
                         <br />
-                        @Html.TextBoxFor(m => m.ItemCategory.CategoryName)
                         @Html.ValidationMessageFor(m => m.ItemCategory.CategoryName, "", new { @class = "text-danger" })
+                        @Html.DropDownList("CategoryList")
+                    </div>
+                    <div class="form-group">
+                        <label>Type(Personal/Shared)</label>
+                        <br />
+                        @Html.ValidationMessageFor(m => m.Type, "", new { @class = "text-danger" })
+                        @Html.DropDownList("ItemTypeList")
+                    </div>
+                    <div class="form-group">
+                        <label>Reservations:</label>
+                        <br />
+                        @Html.ValidationMessageFor(m => m.canReserve, "", new { @class = "text-danger" })
+                        @Html.DropDownList("CanReserveList")
                     </div>
                     <div class="form-group">
                         <label>Owner</label>
                         <br />
-                        @Html.TextBoxFor(m => m.Owner)
                         @Html.ValidationMessageFor(m => m.Owner, "", new { @class = "text-danger" })
+                        @Html.DropDownList("UserList")
                     </div>
                     <div class="form-group">
                         <label>Room</label>
                         <br />
-                        @Html.TextBoxFor(m => m.Room.Number)
                         @Html.ValidationMessageFor(m => m.Room.Number, "", new { @class = "text-danger" })
+                        @Html.DropDownList("RoomList")
                     </div>
                     <div class="form-group">
                         <label>Model</label>
@@ -62,8 +67,8 @@
                     <div class="form-group">
                         <label>Size</label>
                         <br />
-                        @Html.TextBoxFor(m => m.Size)
                         @Html.ValidationMessageFor(m => m.Size, "", new { @class = "text-danger" })
+                        @Html.DropDownList("SizeList")
                     </div>
                     <div class="form-group">
                         <label>Expiration date</label>
@@ -71,22 +76,25 @@
                         @Html.TextBoxFor(m => m.ExpirationDate)
                     </div>
                 </div>
-                <div class="col-md-10">
-                    <div class="form-group">
-                        <label>Description</label>
-                        <br />
-                        @Html.TextAreaFor(m => m.Description, 10, 40, new { HtmlAttributes = new { } })
-                        @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
+                <div class="col-md-8">
+                    <div style="margin-left:300px;">
+                        <div class="form-group">
+                            <label>Description</label>
+                            <br />
+                            @Html.TextAreaFor(m => m.Description, 10, 40, new { HtmlAttributes = new { } })
+                            @Html.ValidationMessageFor(m => m.Description, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group" style="width:200px;">
+                            <label for="exampleInputFile">File input</label>
+                            @Html.TextBoxFor(m => m.FileAttach, new { type = "file", placeholder = Html.DisplayNameFor(m => m.FileAttach), @class = "form-control" })
+                            <small id="fileHelp" class="form-text text-muted">Upload an image max 10MB</small>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Create</button>
                     </div>
-                    <div class="form-group">
-                        <label for="exampleInputFile">File input</label>
-                        <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
-                        <small id="fileHelp" class="form-text text-muted">Upload an image max 10MB</small>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Create</button>
                 </div>
             </form>
         }
     </div>
 </div>
-

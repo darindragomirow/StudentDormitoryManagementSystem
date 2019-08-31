@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web;
 using AutoMapper;
 using StudentDormitoryManagementSystem.Data.Model.Models;
 using StudentDormitoryManagementSystem.Infrastructure;
@@ -14,6 +15,8 @@ namespace StudentDormitoryManagementSystem.Areas.Admin.Models
         public string Description { get; set; }
 
         public string Type { get; set; }
+
+        public bool canReserve { get; set; }
 
         public string Material { get; set; }
 
@@ -33,12 +36,15 @@ namespace StudentDormitoryManagementSystem.Areas.Admin.Models
 
         public string Owner { get; set; }
 
+        public HttpPostedFileBase FileAttach { get; set; }
+
         public void CreateMappings(IMapperConfigurationExpression configuration)
         {
             configuration.CreateMap<Item, AddItemViewModel>()
                 .ForMember(itemViewModel => itemViewModel.Id, cfg => cfg.MapFrom(item => item.Id))
                 .ForMember(itemViewModel => itemViewModel.Name, cfg => cfg.MapFrom(item => item.Name))
                 .ForMember(itemViewModel => itemViewModel.Type, cfg => cfg.MapFrom(item => item.ItemType.ToString()))
+                .ForMember(itemViewModel => itemViewModel.canReserve, cfg => cfg.MapFrom(item => item.canReserve))
                 .ForMember(itemViewModel => itemViewModel.ItemCategory, cfg => cfg.MapFrom(item => item.ItemCategory))
                 .ForMember(itemViewModel => itemViewModel.Description, cfg => cfg.MapFrom(item => item.Description))
                 .ForMember(itemViewModel => itemViewModel.Material, cfg => cfg.MapFrom(item => item.Material))

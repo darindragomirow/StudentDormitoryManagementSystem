@@ -28,6 +28,10 @@ namespace StudentDormitoryManagementSystem.Data
 
         public IDbSet<UserRole> UserRoles { get; set; }
 
+        public IDbSet<Image> Images { get; set; }
+
+        public IDbSet<Breakdown> Breakdowns { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

@@ -11,13 +11,14 @@ namespace StudentDormitoryManagementSystem.Data.Model.Models
     {
         public Item()
         {
-
         }
 
         [Required]
         public string Name { get; set; }
 
         public string Description { get; set; }
+
+        public int Count { get; set; }
 
         public ItemType ItemType { get; set; }
 
@@ -42,13 +43,14 @@ namespace StudentDormitoryManagementSystem.Data.Model.Models
 
         public DateTime? ExpirationDate { get; set; }
 
-        public bool isReserved { get; set; }
-        
+        public bool canReserve { get; set; }
+
         public virtual ICollection<ItemReservation> Reservations { get; set; } = new HashSet<ItemReservation>();
     }
 
     public enum Size
     {
+        NoSize,
         Small,
         Medium,
         Large

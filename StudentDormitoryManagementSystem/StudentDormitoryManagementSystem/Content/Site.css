@@ -1,4 +1,5 @@
 ﻿@import url('https://fonts.googleapis.com/css?family=Numans');
+
 body {
     margin: 0px;
     padding: 0px;
@@ -29,11 +30,11 @@ textarea {
     max-width: 280px;
 }
 
-.container.body-content{
+.container.body-content {
     float: none;
     margin: 0px;
-    margin:unset;
-    padding:0px;
+    margin: unset;
+    padding: 0px;
 }
 
 .navbar-inverse {
@@ -50,7 +51,7 @@ textarea {
     }
 
 .navbar > .container .navbar-brand {
-    margin-left: -232px;
+    margin-left: -320px;
 }
 
 #logo {
@@ -123,12 +124,22 @@ textarea {
     margin-left: 50px;
 }
 
-.row{
-    margin-left:10px;
-    margin-bottom:5px;
+.row {
+    margin-left: 10px;
+    margin-bottom: 5px;
 }
 
 .row-no-padding > [class*="col-"] {
     padding-left: 0 !important;
     padding-right: 0 !important;
+}
+
+#warning {
+    animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
 }

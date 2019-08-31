@@ -1,7 +1,5 @@
-﻿using System;
+﻿using StudentDormitoryManagementSystem.Data.Model.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace StudentDormitoryManagementSystem.Models
 {
@@ -13,6 +11,8 @@ namespace StudentDormitoryManagementSystem.Models
         }
 
         public short RoomNumber { get; set; }
+        public string RoomType { get; set; }
+        public User Owner { get; set; }
         public List<ItemViewModel> AvailableItems { get; set; }
         public int PageSize { get; set; }
         public int TotalCount { get; set; }
