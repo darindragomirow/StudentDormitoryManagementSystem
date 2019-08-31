@@ -1,0 +1,290 @@
+﻿@import url("http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,400italic");
+@import url("//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css");
+
+.item-list {
+    list-style: none;
+    font-family: 'Lato', sans-serif;
+    margin: 0px;
+    margin-top:50px;
+    padding: 0px;
+}
+
+    .item-list > li {
+        background-color: rgb(255, 255, 255);
+        box-shadow: 0px 0px 5px rgb(51, 51, 51);
+        box-shadow: 0px 0px 5px rgba(51, 51, 51, 0.7);
+        padding: 0px;
+        margin: 0px 0px 20px;
+    }
+
+        .item-list > li > time {
+            display: inline-block;
+            width: 100%;
+            color: rgb(255, 255, 255);
+            background-color: rgb(197, 44, 102);
+            padding: 5px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .item-list > li:nth-child(even) > time {
+            background-color: rgb(165, 82, 167);
+        }
+
+        .item-list > li > time > span {
+            display: none;
+        }
+
+        .item-list > li > time > .day {
+            display: block;
+            font-size: 56pt;
+            font-weight: 100;
+            line-height: 1;
+        }
+
+        .item-list > li time > .month {
+            display: block;
+            font-size: 24pt;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .item-list > li > img {
+            width: 100%;
+        }
+
+        .item-list > li > .info {
+            padding-top: 5px;
+            text-align: center;
+            position:relative;
+        }
+
+            .item-list > li > .info > .title {
+                font-size: 17pt;
+                font-weight: 700;
+                margin: 0px;
+            }
+
+            .item-list > li > .info > .desc {
+                font-size: 13pt;
+                font-weight: 300;
+                margin: 0px;
+            }
+
+            .item-list > li > .info > ul,
+            .item-list > li > .social > ul {
+                display: table;
+                list-style: none;
+                margin: 10px 0px 0px;
+                padding: 0px;
+                width: 100%;
+                text-align: center;
+            }
+
+        .item-list > li > .social > ul {
+            margin: 0px;
+        }
+
+            .item-list > li > .info > ul > li,
+            .item-list > li > .social > ul > li {
+                display: table-cell;
+                cursor: pointer;
+                color: rgb(30, 30, 30);
+                font-size: 11pt;
+                font-weight: 300;
+                padding: 3px 0px;
+            }
+
+                .item-list > li > .info > ul > li > a {
+                    display: block;
+                    width: 100%;
+                    color: rgb(30, 30, 30);
+                    text-decoration: none;
+                }
+
+            .item-list > li > .social > ul > li {
+                padding: 0px;
+            }
+
+                .item-list > li > .social > ul > li > a {
+                    padding: 3px 0px;
+                }
+
+                .item-list > li > .info > ul > li:hover,
+                .item-list > li > .social > ul > li:hover {
+                    color: rgb(30, 30, 30);
+                    background-color: rgb(200, 200, 200);
+                }
+
+@media (min-width: 768px) {
+    .item-list > li {
+        position: relative;
+        display: inline-block;
+        width: 500px;
+        height: 120px;
+        padding: 0px;
+        margin-left:20px;
+        float:left;
+    }
+
+        .item-list > li > time,
+        .item-list > li > img {
+            display: inline-block;
+        }
+
+        .item-list > li > time,
+        .item-list > li > img {
+            width: 120px;
+            float: left;
+        }
+
+        .item-list > li > .info {
+            background-color: rgb(245, 245, 245);
+            overflow: hidden;
+        }
+
+        .item-list > li > time,
+        .item-list > li > img {
+            width: 120px;
+            height: 120px;
+            padding: 0px;
+            margin: 0px;
+        }
+
+        .item-list > li > .info {
+            position: relative;
+            height: 120px;
+            text-align: left;
+            padding-right: 40px;
+        }
+
+            .item-list > li > .info > .title,
+            .item-list > li > .info > .desc {
+                padding: 0px 10px;
+            }
+
+            .item-list > li > .info > ul {
+                position: absolute;
+                left: 0px;
+                bottom: 0px;
+            }
+
+        .item-list > li > .social {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            display: block;
+            width: 40px;
+        }
+
+            .item-list > li > .social > ul {
+                border-left: 1px solid rgb(230, 230, 230);
+            }
+
+                .item-list > li > .social > ul > li {
+                    display: block;
+                    padding: 0px;
+                }
+
+                    .item-list > li > .social > ul > li > a {
+                        display: block;
+                        width: 40px;
+                        padding: 10px 0px 9px;
+                    }
+}
+
+.container .container-recents {
+    padding: 100px;
+}
+
+.btnReserv {
+    background: #ff9f1a;
+    padding: 2px;
+    border: none;
+    /*text-transform: UPPERCASE;*/
+    font-weight: bold;
+    color: #fff;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+}
+
+.btnReserv:hover {
+    background-color: lightgreen;
+}
+
+.btnAcknowledge {
+    background: #428BCA;
+    padding: 2px;
+    border: none;
+    /*text-transform: UPPERCASE;*/
+    font-weight: bold;
+    color: #fff;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+}
+
+.btnAcknowledge:hover {
+    background-color: lightblue;
+}
+
+#isAvailable {
+    padding: 2px;
+    border: none;
+    font-weight: bold;
+    color: #fff;
+    position: absolute;
+    right: 100px;
+    bottom: 5px;
+    border-radius: 5px;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+#sender {
+    padding: 2px;
+    border: none;
+    font-weight: bold;
+    color: #fff;
+    position: absolute;
+    right: 100px;
+    bottom: 5px;
+    border-radius: 5px;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+#roomNumber {
+    padding: 2px;
+    border: none;
+    font-weight: bold;
+    color: #fff;
+    position: absolute;
+    right: 220px;
+    bottom: 5px;
+    border-radius: 5px;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+
+
+.room-info {
+    width: 200px;
+    float: left;
+    margin-left: -200px;
+    margin-top: 50px;
+    border: 1px solid gray;
+    box-shadow: 0px 0px 5px rgba(51, 51, 51, 0.7);
+    display: inline-block;
+    padding: 5px;
+    font-size:16px;
+}
+
+#icon-info {
+    float: right;
+    margin-right: 50px;
+    font-size: 30px;
+    color: #428BCA;
+}

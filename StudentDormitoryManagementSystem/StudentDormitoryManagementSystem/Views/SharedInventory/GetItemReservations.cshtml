@@ -1,0 +1,70 @@
+﻿@using Syncfusion.EJ2
+@using Syncfusion.EJ2.Schedule
+@model StudentDormitoryManagementSystem.Models.ItemViewModel
+@{
+    ViewBag.Title = "Item reservations";
+}
+
+<div class="reservations">
+    @section ControlsSection{
+        @*// Current item info*@
+        <div class="item-info">
+            <h1>Current reservations:</h1>
+            <h3>@Model.Name</h3>
+            <p>@Model.Description</p>
+        </div>
+
+        @*// Scheduler loaded with events from DB*@
+        <div class="control-section">
+            <div class="content-wrapper">
+                @(Html.EJS().Schedule("schedule").Width("100%").Height("550px").ActionBegin("onActionBegin").EventSettings(e => e.DataSource(d => d.Url(Url.Action("GetData", "SharedInventory", new { id = Model.Id })).CrudUrl(Url.Action("UpdateData", "SharedInventory", new { id = Model.Id })).Adaptor("UrlAdaptor").CrossDomain(true))).SelectedDate(DateTime.Today).Render())
+            </div>
+        </div>
+        <script type="text/javascript">
+            function onEventRendered(args) {
+                var scheduleObj = document.getElementById('schedule').ej2_instances[0];
+                var categoryColor = args.data.CategoryColor;
+                if (!args.element || !categoryColor) {
+                    return;
+                }
+                if (scheduleObj.currentView === 'Agenda') {
+                    (args.element.firstChild).style.borderLeftColor = categoryColor;
+                } else {
+                    args.element.style.backgroundColor = categoryColor;
+                }
+            }
+        </script>
+        <style>
+            .e-schedule .e-schedule-toolbar .e-icon-schedule-excel-export::before {
+                content: '\e242';
+            }
+
+            .e-schedule-toolbar .e-toolbar-item.e-today {
+                display: none;
+            }
+        </style>
+
+        <script type="text/javascript">
+
+            function onActionBegin(args) {
+                if (args.requestType === 'toolbarItemRendering') {
+                    var exportItem = {
+                        align: 'Right', showTextOn: 'Both', prefixIcon: 'e-icon-schedule-excel-export',
+                        text: 'Excel Export', cssClass: 'e-excel-export', click: onExportClick
+                    };
+                    args.items.push(exportItem);
+                }
+            }
+
+            function onExportClick() {
+                var scheduleObj = document.getElementById('schedule').ej2_instances[0];
+                var exportValues = {
+                    fields: ['Id', 'Subject', 'StartTime', 'EndTime', 'Location']
+                };
+                scheduleObj.exportToExcel(exportValues);
+            }
+        </script>
+    }
+</div>
+
+

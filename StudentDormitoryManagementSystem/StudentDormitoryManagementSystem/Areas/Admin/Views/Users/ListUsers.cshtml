@@ -1,0 +1,35 @@
+﻿@using StudentDormitoryManagementSystem.Areas.Profile.Models
+@model UsersViewModel
+@{
+    ViewBag.Title = "Users list";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var defaultPageSize = StudentDormitoryManagementSystem.Common.Constants.DefaultPageSize;
+    WebGrid grid = new WebGrid(null, rowsPerPage: defaultPageSize);
+    grid.Bind(Model.Users, autoSortAndPage: true, rowCount: defaultPageSize);
+}
+@Html.Partial("_AdminPanelPartial")
+<div class="col-md-6">
+    <div class="users-list" style="margin-top:65px;">
+
+        @if (Model.TotalCount > 0)
+        {
+            @grid.GetHtml(tableStyle: "table table-bordered",
+                                   mode: WebGridPagerModes.All,
+                                   firstText: "<< First",
+                                   previousText: "< Prev",
+                                   nextText: "Next >",
+                                   lastText: "Last >>",
+                                      columns: grid.Columns(
+                                      grid.Column("UserName", "UserName"),
+                                      grid.Column("FirstName", "FirstName"),
+                                      grid.Column("SecondName", "SecondName"),
+                                      grid.Column("Speciality", "Speciality"),
+                                      grid.Column("University", "University")))
+        }
+        else
+        {
+            <h3>Currently, there are no registered users in the system!</h3>
+        }
+    </div>
+</div>
