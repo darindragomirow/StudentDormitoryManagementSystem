@@ -10,8 +10,7 @@
 }
 @Html.Partial("_AdminPanelPartial")
 <div class="col-md-6">
-    <div class="users-list" style="margin-top:65px;">
-
+    <div class="users-list" style="margin-top:65px;width:1000px;">
         @if (Model.TotalCount > 0)
         {
             @grid.GetHtml(tableStyle: "table table-bordered",

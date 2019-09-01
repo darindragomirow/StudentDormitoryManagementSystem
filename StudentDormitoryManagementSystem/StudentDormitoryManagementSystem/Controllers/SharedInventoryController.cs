@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using StudentDormitoryManagementSystem.Common;
 
 namespace StudentDormitoryManagementSystem.Controllers
 {
@@ -59,7 +60,22 @@ namespace StudentDormitoryManagementSystem.Controllers
             return View(model);
         }
 
-        
+        public ActionResult GetStorehouseItems()
+        {
+            var storehouse = _inventoriesService.GetAll().SingleOrDefault(i => i.Room.Number == Common.Constants.Storehouse);
+            var storehouseItems = storehouse?.Items.ToList().Select(x => _mapper.Map<ItemViewModel>(x)).ToList();
+
+            ItemsViewModel model = new ItemsViewModel();
+
+            if (storehouseItems != null && storehouseItems?.Count > 0)
+            {
+                model.RoomNumber = Common.Constants.Storehouse;
+                model.AvailableItems = storehouseItems;
+                model.TotalCount = storehouseItems.Count;
+            }
+
+            return View(model);
+        }
 
         private void SetItemsCurrentStatus(List<ItemViewModel> inventoryItems)
         {

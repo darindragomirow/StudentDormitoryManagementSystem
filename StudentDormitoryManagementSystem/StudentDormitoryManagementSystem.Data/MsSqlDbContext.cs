@@ -32,6 +32,8 @@ namespace StudentDormitoryManagementSystem.Data
 
         public IDbSet<Breakdown> Breakdowns { get; set; }
 
+        public IDbSet<News> News { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

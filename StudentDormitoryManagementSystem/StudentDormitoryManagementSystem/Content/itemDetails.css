@@ -186,6 +186,15 @@ img {
     padding: 1.3em;
 }
 
+#qr-container{
+    margin-left:46px;
+}
+
+#qr-share{
+    margin-left:46px;
+    margin-top:5px;
+}
+
 @-webkit-keyframes opacity {
     0% {
         opacity: 0;

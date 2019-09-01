@@ -82,12 +82,16 @@
                                 </div>
                             </li>
                         }
-                        <li>
-                            <div class="row row-no-padding">
-                                <div class="col-sm-8"><a><strong>News</strong></a></div>
-                                <div class="col-sm-4"><img class="icon" src="http://localhost/StudentDormitoryManagementSystem/Content/Images/info.png" /></div>
-                            </div>
-                        </li>
+
+                        @if (User.Identity.Name == Constants.AdminEmail)
+                        {
+                            <li data-toggle="collapse" data-target="#products" class="collapsed">
+                                <div class="row row-no-padding">
+                                    <div class="col-sm-8"><strong>@Html.ActionLink("Storehouse", "GetStorehouseItems", "SharedInventory", new { Area = "" }, new { })</strong></div>
+                                    <div class="col-sm-4"><img class="icon" src="http://localhost/StudentDormitoryManagementSystem/Content/Images/storehouse.png" /></div>
+                                </div>
+                            </li>
+                        }
                         @if (User.Identity.Name == Constants.AdminEmail)
                         {
                             <li data-toggle="collapse" data-target="#products" class="collapsed">
@@ -97,6 +101,12 @@
                                 </div>
                             </li>
                         }
+                        <li>
+                            <div class="row row-no-padding">
+                                <div class="col-sm-8"><strong>@Html.ActionLink("News", "Index", "News", new { Area = "" }, new { })</strong></div>
+                                <div class="col-sm-4"><img class="icon" src="http://localhost/StudentDormitoryManagementSystem/Content/Images/info.png" /></div>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>

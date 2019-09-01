@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Web;
 using System.IO;
 using StudentDormitoryManagementSystem.Common;
+using StudentDormitoryManagementSystem.Models;
 
 namespace StudentDormitoryManagementSystem.Areas.Admin
 {
@@ -44,6 +45,38 @@ namespace StudentDormitoryManagementSystem.Areas.Admin
         public ActionResult Index()
         {
             return View();
+        }
+
+        // GET: Admin/ListItems
+        [HttpGet]
+        public ActionResult ListItems()
+        {
+            var list = itemsService.GetAll().ToList().Select(x => mapper.Map<ItemViewModel>(x)).ToList();
+
+            var model = new ItemsViewModel();
+            if(list != null)
+            {
+                model.AvailableItems = list;
+                model.TotalCount = list.Count;
+            }
+
+            return View(model);
+        }
+
+        // GET: Admin/ExpiredItems
+        [HttpGet]
+        public ActionResult ExpiredItems()
+        {
+            var list = itemsService.GetAll().Where(i => i.ExpirationDate < DateTime.Now).ToList().Select(x => mapper.Map<ItemViewModel>(x)).ToList();
+
+            var model = new ItemsViewModel();
+            if (list != null)
+            {
+                model.AvailableItems = list;
+                model.TotalCount = list.Count;
+            }
+
+            return View(model);
         }
 
         // GET: Admin/AdminItems/AddNewItem
@@ -150,9 +183,26 @@ namespace StudentDormitoryManagementSystem.Areas.Admin
             return Redirect(Url.Action("Index", "AdminItems", new { area = "Admin" }));
         }
 
+        // Admin/AdminItems/Delete
+        public ActionResult Delete(Guid id)
+        {
+            var item = itemsService.GetAll().SingleOrDefault(i => i.Id == id);
+
+            if(item != null)
+            {
+                itemsService.Delete(item);
+            }
+            else
+            {
+                return HttpNotFound($"The item with id: {id} could not be found!");
+            }
+
+            return RedirectToAction("ListItems", "AdminItems");
+        }
+
         public List<string> GetExistingRooms()
         {
-            return roomService.GetAll().Select(r => r.Number.ToString()).Distinct().ToList();
+           return roomService.GetAll().Select(r => r.Number.ToString()).Distinct().ToList();
         }
 
         public List<string> GetExistingCategories()
@@ -168,7 +218,7 @@ namespace StudentDormitoryManagementSystem.Areas.Admin
         private void UploadImage(HttpPostedFileBase ImageFile, Guid? itemId)
         {
             string extension = Path.GetExtension(ImageFile.FileName);
-            string fileName = Path.GetFileNameWithoutExtension(ImageFile.FileName) + "_" + GetCurrentDateAsString() + extension;
+            string fileName = Path.GetFileNameWithoutExtension(ImageFile.FileName) + "_" + Utils.GetCurrentDateAsString() + extension;
 
             var path = Constants.UploadedImagesPath + fileName;
             var fullPath = Path.Combine(Server.MapPath($"~{Constants.UploadedImagesPath}"), fileName);
@@ -185,12 +235,6 @@ namespace StudentDormitoryManagementSystem.Areas.Admin
             };
 
             imagesService.Add(image);
-        }
-
-        private string GetCurrentDateAsString()
-        {
-            var now = DateTime.Now;
-            return $"{now.Year}{now.Month}{now.Day}{now.Hour}{now.Minute}";
         }
     }
 }

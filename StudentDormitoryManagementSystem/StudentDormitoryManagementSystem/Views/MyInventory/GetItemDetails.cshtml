@@ -16,8 +16,10 @@
             <div class="wrapper row">
                 <div class="preview col-md-6">
                     <div class="preview-pic tab-content">
-                        <div class="tab-pane active" id="pic-1"><img src="@Model.ImagePath" style="width:100%;height:75%" /></div>
+                        <div class="tab-pane active" id="pic-1"><img src="@Model.ImagePath" style="width: 300px;height: 400px;" /></div>
                     </div>
+                        @(Html.EJS().QRCodeGenerator("qr-container").Width("120px").Height("120px").Value($"{Constants.ItemDetailsURL}{Model.Id}").DisplayText(s => s.Visibility(false)).Render())
+                        <span id="qr-share">Share this link using this QR code</span>
                 </div>
 
                 <div class="details col-md-6">

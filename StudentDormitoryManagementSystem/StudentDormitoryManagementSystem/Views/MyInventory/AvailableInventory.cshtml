@@ -71,7 +71,7 @@
                                            grid.Column("State", "State"),
                                            grid.Column("Size", "Size"),
                                            grid.Column("DateRegistered", "DateRegistered"),
-                                           grid.Column("ExpirationDate", "ExpirationDate"),
+                                           grid.Column(header:"ExpirationDate", format:@<text> @if(item.Value.ExpirationDate < DateTime.Now){<div id="expDate" style="background:red">@item.Value.ExpirationDate</div>}else{<div id="expDate">@item.Value.ExpirationDate</div>}</text>),
                                            grid.Column(header: "Edit", format: @<text><a data-value='@item.Value.Id' href='javascript:void(0)' class='btnEdit'><span class="glyphicon glyphicon-pencil" style="font-size: 30px;"></span></a></text>),
                                            grid.Column(header: "Details", format: @<text><a href="@Url.Action("GetItemDetails", "MyInventory", new { id = item.Value.Id })"><span id="details" class="glyphicon glyphicon-info-sign" style="color:forestgreen;font-size: 30px;margin-left: 10px;"></span></a></text>)))
 

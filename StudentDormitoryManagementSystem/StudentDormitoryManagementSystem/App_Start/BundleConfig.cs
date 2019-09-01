@@ -36,7 +36,8 @@ namespace StudentDormitoryManagementSystem
                 "~/Content/itemsGrid.css",
                 "~/Content/itemDetails.css",
                 "~/Content/sharedItemsList.css",
-                "~/Content/report-breakdown.css"));
+                "~/Content/report-breakdown.css",
+                "~/Content/news.css"));
 
             bundles.Add(new StyleBundle("~/Content/login").Include(
                 "~/Content/login.css"));

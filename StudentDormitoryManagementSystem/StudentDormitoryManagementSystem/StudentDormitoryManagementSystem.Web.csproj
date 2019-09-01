@@ -225,9 +225,11 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminItemsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminNewsController.cs" />
     <Compile Include="Areas\Admin\Controllers\BreakdownsController.cs" />
     <Compile Include="Areas\Admin\Controllers\UsersController.cs" />
     <Compile Include="Areas\Admin\Models\AddItemViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\AdminNewsViewModel.cs" />
     <Compile Include="Areas\Profile\Controllers\ProfileController.cs" />
     <Compile Include="Areas\Profile\Models\UsersViewModel.cs" />
     <Compile Include="Areas\Profile\Models\UserViewModel.cs" />
@@ -239,6 +241,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MyInventoryController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\SharedInventoryController.cs" />
     <Compile Include="Global.asax.cs">
@@ -255,6 +258,7 @@
     <Compile Include="Models\ItemViewModel.cs" />
     <Compile Include="Models\ItemsViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\NewsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -279,6 +283,7 @@
     <Content Include="Content\itemsGrid.css" />
     <Content Include="Content\login.css" />
     <Content Include="Content\navbar-new.css" />
+    <Content Include="Content\news.css" />
     <Content Include="Content\report-breakdown.css" />
     <Content Include="Content\sharedItemsList.css" />
     <Content Include="favicon.ico" />
@@ -300,6 +305,9 @@
     <Content Include="Areas\Admin\Views\Users\ListUsers.cshtml" />
     <Content Include="Areas\Admin\Views\Breakdowns\GetCurrentBreakdowns.cshtml" />
     <Content Include="Areas\Admin\Views\Breakdowns\GetAllBreakdowns.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminItems\ListItems.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminNews\AddNews.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminItems\ExpiredItems.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\editItem.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
@@ -360,9 +368,13 @@
     <Content Include="Views\Report\ReportBreakdown.cshtml" />
     <Content Include="Views\Code\Qrcode.cshtml" />
     <Content Include="Views\Code\Index.cshtml" />
+    <Content Include="Views\SharedInventory\GetStorehouseItems.cshtml" />
+    <Content Include="Views\News\Index.cshtml" />
+    <Content Include="Views\News\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Images\News\" />
     <Folder Include="Content\Images\Uploaded\" />
   </ItemGroup>
   <ItemGroup>

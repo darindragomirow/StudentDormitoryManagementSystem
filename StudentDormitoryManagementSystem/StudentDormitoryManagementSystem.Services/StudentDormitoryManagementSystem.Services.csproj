@@ -48,6 +48,7 @@
     <Compile Include="Contracts\IImagesService.cs" />
     <Compile Include="Contracts\IItemsService.cs" />
     <Compile Include="Contracts\IInventoriesService.cs" />
+    <Compile Include="Contracts\INewsService.cs" />
     <Compile Include="Contracts\IReservationsService.cs" />
     <Compile Include="Contracts\IRoomsService.cs" />
     <Compile Include="Contracts\IService.cs" />
@@ -58,6 +59,7 @@
     <Compile Include="InventoriesService.cs" />
     <Compile Include="ItemCategoriesService.cs" />
     <Compile Include="ItemsService.cs" />
+    <Compile Include="NewsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReservationsService.cs" />
     <Compile Include="RoomsService.cs" />
